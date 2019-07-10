@@ -1,6 +1,6 @@
 import math
 import random
-from src.utils.data import Data
+from utils.data import Data
 
 
 def sigmoid_activation(x):

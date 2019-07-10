@@ -1,4 +1,4 @@
-from src.utils import math_helper
+from utils import math_helper
 import random
 
 

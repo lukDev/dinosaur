@@ -1,7 +1,7 @@
 import pyglet
 from pyglet.gl import GL_QUADS
-from src.utils.data import Data
-from src.utils import math_helper
+from utils.data import Data
+from utils import math_helper
 
 
 class Entity:

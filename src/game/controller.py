@@ -1,8 +1,8 @@
-from src.utils.data import Data
-from src.game.entity import Obstacle
+from utils.data import Data
+from game.entity import Obstacle
 import pyglet
 import random
-from src.utils import math_helper
+from utils import math_helper
 
 
 class Controller:

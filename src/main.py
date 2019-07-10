@@ -1,8 +1,8 @@
 import pyglet
-import src.neat.metrics as metrics
+from neat import metrics
 from utils.data import Data
 import pyglet.window.key
-from src.game.controller import Controller
+from game.controller import Controller
 
 
 window = pyglet.window.Window(width=Data.field_size_x, height=Data.field_size_y, resizable=True)

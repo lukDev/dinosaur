@@ -1,11 +1,11 @@
 from functools import reduce
 
-from src.game import entity
-from src.utils.data import Data
+from game import entity
+from utils.data import Data
 import random
-from src.neat.network import Network
-from src.neat.network import Gene
-from src.utils import math_helper
+from neat.network import Network
+from neat.network import Gene
+from utils import math_helper
 
 
 # --- evaluation ---
