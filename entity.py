@@ -1,7 +1,6 @@
 import pyglet
 from pyglet.gl import GL_QUADS
 from data import Data
-from IO import IO
 import math_helper
 
 

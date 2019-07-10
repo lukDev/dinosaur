@@ -1,6 +1,5 @@
 import pyglet
 import metrics
-from IO import IO
 from data import Data
 import pyglet.window.key
 from controller import Controller
@@ -36,18 +35,6 @@ def on_draw():
     gen_label.draw()
     alive_players_label.draw()
     fitness_label.draw()
-
-
-@window.event
-def on_key_press(symbol, _):
-    IO.keyPressed(symbol)
-    if symbol == pyglet.window.key.N:
-        print(metrics.best_player().network.to_string())
-
-
-@window.event
-def on_key_release(symbol, _):
-    IO.keyReleased(symbol)
 
 
 # --- Functions ---
