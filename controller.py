@@ -39,18 +39,10 @@ class Controller:
         return alive_count
 
     @staticmethod
-    def send_obstacle(dt):
-        standard_obstacle_size_y = Data.standard_obstacle_size_y()
-        if dt < Data.large_obstacle_min_time_dif:
-            Data.obstacles.append(Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=standard_obstacle_size_y))
-            pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(Data.obstacle_time_dif_min, Data.obstacle_time_dif_max))
-        else:
-            size_y = math_helper.random_range_decision(Data.obstacle_sizes_y)
-            lower_time_bound = Data.obstacle_time_dif_min
-            if size_y > standard_obstacle_size_y:
-                lower_time_bound = Data.large_obstacle_min_time_dif
-            Data.obstacles.append(Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
-            pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(lower_time_bound, Data.obstacle_time_dif_max))
+    def send_obstacle(_):
+        size_y = math_helper.random_range_decision(Data.obstacle_sizes_y)
+        Data.obstacles.append(Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
+        pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(Data.obstacle_time_dif_min, Data.obstacle_time_dif_max))
 
     @staticmethod
     def reset_level():

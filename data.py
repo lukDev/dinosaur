@@ -19,9 +19,8 @@ class Data:
     obstacle_start_x = field_size_x + 10.
     obstacle_size_x = 20.
     obstacle_sizes_y = [(40., .6), (60., .4)]
-    obstacle_time_dif_min = 0.45
+    obstacle_time_dif_min = 0.55
     obstacle_time_dif_max = 1.5
-    large_obstacle_min_time_dif = 0.7
     jump_speed_up = 300.
     gravity_acc = 1500.
     no_gravity_time_long = 0.18
