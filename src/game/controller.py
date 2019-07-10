@@ -6,6 +6,7 @@ from utils import math_helper
 
 
 class Controller:
+    # updates and creates new obstacles, triggers the players' movement
     @staticmethod
     def update(dt):
         if dt > 0.5:
@@ -38,12 +39,14 @@ class Controller:
 
         return alive_count
 
+    # sends a new obstacle towards the player and sets a timer for the next one
     @staticmethod
     def send_obstacle(_):
         size_y = math_helper.random_range_decision(Data.obstacle_sizes_y)
         Data.obstacles.append(Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
         pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(Data.obstacle_time_dif_min, Data.obstacle_time_dif_max))
 
+    # resets the level
     @staticmethod
     def reset_level():
         Data.obstacles = []

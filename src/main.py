@@ -4,7 +4,7 @@ from utils.data import Data
 import pyglet.window.key
 from game.controller import Controller
 
-
+# --- Initialization ---
 window = pyglet.window.Window(width=Data.field_size_x, height=Data.field_size_y, resizable=True)
 gen_label = pyglet.text.Label("Gen: ", x=10, y=30)
 gen_label.color = (0, 0, 0, 255)
@@ -16,6 +16,8 @@ Controller.reset_level()
 
 
 # --- Events ---
+
+# redraws the window's content each frame
 @window.event
 def on_draw():
     window.clear()
@@ -38,6 +40,8 @@ def on_draw():
 
 
 # --- Functions ---
+
+# updates all entities and UI elements each frame
 def update(dt):
     Data.overall_time += dt
     alive_count = Controller.update(dt)
@@ -52,6 +56,7 @@ def update(dt):
         next_gen()
 
 
+# creates the next generation of players from the previous one
 def next_gen():
     pyglet.clock.unschedule(update)
     Controller.reset_level()

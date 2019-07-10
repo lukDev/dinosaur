@@ -8,7 +8,7 @@ from neat.network import Gene
 from utils import math_helper
 
 
-# --- evaluation ---
+# --- Evaluation ---
 def best_player():
     fitnesses = [p.fitness for p in Data.players]
     max_f = max(fitnesses)

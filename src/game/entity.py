@@ -4,6 +4,7 @@ from utils.data import Data
 from utils import math_helper
 
 
+# superclass for all moving objects
 class Entity:
     def __init__(self, x, y, size_x, size_y):
         self.x = x
@@ -13,10 +14,12 @@ class Entity:
         self.time_since_jump = 0
         self.long_jump = False
 
+    # draws the entity to the screen, in the form of a black rectangle
     def render(self):
         coords = [self.x, self.y, self.x + self.size_x, self.y, self.x + self.size_x, self.y + self.size_y, self.x, self.y + self.size_y]
         pyglet.graphics.draw(4, GL_QUADS, ("v2f", coords))
 
+    # returns the entity's center coordinates
     def center(self):
         return math_helper.center(self.x, self.y, self.size_x, self.size_y)
 
@@ -28,6 +31,8 @@ class Player(Entity):
         self.alive = True
         self.fitness = 0
 
+    # determines the player's desired movement (jump low / jump high / stay put) for the given situation,
+    # using its neural network
     def move(self, dt):
         if not self.alive:
             return
@@ -81,5 +86,6 @@ class Obstacle(Entity):
     def __init__(self, x, y, size_x=20., size_y=40.):
         Entity.__init__(self, x, y, size_x, size_y)
 
+    # moves the obstacle closer to the player
     def move(self, dt):
         self.x -= dt * Data.obstacle_speed

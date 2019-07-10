@@ -2,6 +2,7 @@ from utils import math_helper
 import random
 
 
+# a gene, representing the connection between two neurons
 class Gene:
     def __init__(self, in_n, out_n, weight, enabled, innovation_number):
         self.in_n = in_n
@@ -10,10 +11,12 @@ class Gene:
         self.enabled = enabled
         self.innovation_number = innovation_number
 
+    # creates an exact copy of itself
     def replicate(self):
         return Gene(self.in_n, self.out_n, self.weight, self.enabled, self.innovation_number)
 
 
+# the neural network, defined by its genes and both the input and output layer
 class Network:
     def __init__(self, genes, add_ins, add_outs):
         self.genes = genes
