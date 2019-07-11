@@ -63,9 +63,10 @@ def next_gen():
     Data.overall_time = 0.
 
     if len(Data.players) == 0:
-        metrics.init_starter_players()
+        Controller.init_starter_players()
     else:
-        metrics.evolve([(p.network, p.fitness) for p in Data.players])
+        new_gen = metrics.evolve([(p.network, p.fitness) for p in Data.players])
+        Controller.create_new_players(new_gen)
 
     Data.gen += 1
 

@@ -158,6 +158,14 @@ class Network:
     def max_innovation_number(self):
         return max([g.innovation_number for g in self.genes]) if len(self.genes) > 0 else 0
 
+    # returns the average weight of all genes
+    def avg_weight(self):
+        if len(self.genes) == 0:
+            return 0.
+
+        weights = [abs(g.weight) for g in self.genes]
+        return reduce(lambda x, y: x + y, weights) / len(weights)
+
     # formats itself as a string describing the network
     def to_string(self):
         string = "Network:\n"

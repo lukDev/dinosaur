@@ -1,8 +1,9 @@
 from utils.data import Data
-from game.entity import Obstacle
+import game.entity as entity
 import pyglet
 import random
 from utils import math_helper
+from neat.network import Network
 
 
 class Controller:
@@ -43,7 +44,7 @@ class Controller:
     @staticmethod
     def send_obstacle(_):
         size_y = math_helper.random_range_decision(Data.obstacle_sizes_y)
-        Data.obstacles.append(Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
+        Data.obstacles.append(entity.Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
         pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(Data.obstacle_time_dif_min, Data.obstacle_time_dif_max))
 
     # resets the level
@@ -52,3 +53,28 @@ class Controller:
         Data.obstacles = []
         pyglet.clock.unschedule(Controller.send_obstacle)
         Controller.send_obstacle(0)
+
+    # creates the first generation's players, giving them a neural network with just input and output neurons,
+    # but without any genes
+    @staticmethod
+    def init_starter_players():
+        Data.players = []
+        Data.current_innovation_number = 0  # setting the innovation number so that it's valid after initialization
+
+        for _ in range(Data.population_size):
+            genes = []
+            add_ins = [0, 1, 2]
+            add_outs = [3, 4]
+
+            network = Network(genes, add_ins, add_outs)
+            Data.players.append(entity.Player(network, x=Data.player_x, y=Data.baseline, size_x=Data.player_size_x,
+                                              size_y=Data.player_size_y))
+
+    # creates new players from a given list of neural networks
+    @staticmethod
+    def create_new_players(nets):
+        Data.players = []
+
+        for net in nets:
+            Data.players.append(entity.Player(network=net, x=Data.player_x, y=Data.baseline, size_x=Data.player_size_x,
+                                              size_y=Data.player_size_y))
