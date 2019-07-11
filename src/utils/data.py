@@ -1,5 +1,5 @@
 class Data:
-    # --- controller parameters ---
+    # --- Controller Parameters ---
     players = []
     obstacles = []
     gen = 0
@@ -7,7 +7,7 @@ class Data:
     closest_obstacle = None
     second_closest_obstacle = None
 
-    # --- game parameters ---
+    # --- Game Parameters ---
     field_size_x = 800.
     field_size_y = 300.
     player_x = 100.
@@ -26,13 +26,12 @@ class Data:
     no_gravity_time_long = 0.18
     no_gravity_time_short = 0.085
 
-    # --- NEAT parameters ---
+    # --- NEAT Parameters ---
     population_size = 170
     disjoint_weight = 1.
     excess_weight = 1.
     weight_dif_weight = 0.4
     speciation_threshold = 0.7
-    plateau_limit = 15
     prob_crossover = 0.75
     prob_weight_mut = 0.8
     prob_weight_nudged = 0.9
@@ -41,7 +40,7 @@ class Data:
     prob_new_gene = 0.05
     current_innovation_number = 0
 
-    # --- methods ---
+    # --- Methods ---
     @staticmethod
     def standard_obstacle_size_y():
         (size_y, _) = Data.obstacle_sizes_y[0]

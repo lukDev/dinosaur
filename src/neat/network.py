@@ -18,6 +18,8 @@ class Gene:
 
 # the neural network, defined by its genes and both the input and output layer
 class Network:
+    # --- Initialization ---
+
     def __init__(self, genes, add_ins, add_outs):
         self.genes = genes
         self.ins = []
@@ -27,6 +29,7 @@ class Network:
         self.add_outs = add_outs
         self.set_ins_and_outs()
 
+    # calculate the input and output neurons from the given genes
     def set_ins_and_outs(self):
         in_counts = dict()
         out_counts = dict()
@@ -70,6 +73,8 @@ class Network:
             if add_out not in self.all_neurons:
                 self.all_neurons.append(add_out)
 
+    # refreshes the neuron list
+    # used when adding genes that don't add neurons to the input or output layer
     def refresh_neuron_list(self):
         neurons = []
 
@@ -83,6 +88,23 @@ class Network:
 
         self.all_neurons = neurons
 
+    # --- Activations ---
+
+    # returns the output neurons' activations for a given set of input activations
+    # does so by calling the recursive function add_activation_for for all output neurons
+    def get_activations(self, in_acts):
+        if len(in_acts) != len(self.ins):
+            raise ValueError("Input activations don't match input neurons")
+
+        activations = {self.ins[i] : in_acts[i] for i in range(len(in_acts))}
+        for out in self.outs:
+            activations = self.add_activation_for(out, activations)
+
+        return [ac for (n, ac) in activations.items() if n in self.outs]
+
+    # adds the activations for a given neuron to the dict of activations
+    # does so by identifying all neurons whose activations need to be known for the calculation and recursively
+    # calling itself for those neurons
     def add_activation_for(self, neuron_nr, activations):
         if neuron_nr in activations.keys():
             return activations
@@ -99,19 +121,9 @@ class Network:
 
         return activations
 
-    def get_activations(self, in_acts):
-        if len(in_acts) != len(self.ins):
-            raise ValueError("Input activations don't match input neurons")
+    # --- Mutation ---
 
-        activations = {self.ins[i] : in_acts[i] for i in range(len(in_acts))}
-        for out in self.outs:
-            activations = self.add_activation_for(out, activations)
-
-        return [ac for (n, ac) in activations.items() if n in self.outs]
-
-    def replicate(self):
-        return Network([g.replicate() for g in self.genes], self.add_ins, self.add_outs)
-
+    # randomly selects a pair of appropriate neurons for a new gene to be added
     def new_gene_neurons(self):
         in_n = random.choice(self.all_neurons)
         out_n = random.choice(self.all_neurons)
@@ -122,8 +134,10 @@ class Network:
         if self._is_dependency_(out_n, [in_n]):
             return self.new_gene_neurons()
 
-        return (in_n, out_n)
+        return in_n, out_n
 
+    # checks whether a given neuron is a dependency for a given path, meaning that the neuron's activation is needed
+    # for the calculation of activations along the path
     def _is_dependency_(self, neuron, path):
         if len(path) == 0:
             return False
@@ -134,9 +148,17 @@ class Network:
             path.extend([g.in_n for g in self.genes if g.out_n == path[0]])
             return self._is_dependency_(neuron, path[1:])
 
+    # --- Utils ---
+
+    # creates an exact copy of itself
+    def replicate(self):
+        return Network([g.replicate() for g in self.genes], self.add_ins, self.add_outs)
+
+    # returns the maximum innovation number found within all genes
     def max_innovation_number(self):
         return max([g.innovation_number for g in self.genes]) if len(self.genes) > 0 else 0
 
+    # formats itself as a string describing the network
     def to_string(self):
         string = "Network:\n"
 
