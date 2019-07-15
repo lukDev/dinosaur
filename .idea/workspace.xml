@@ -16,6 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/entity.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="675">
               <caret line="99" column="42" lean-forward="true" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
             </state>
@@ -63,6 +64,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="765">
               <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+=======
+            <state relative-caret-position="150">
+              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -174,7 +179,10 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$/res" />
+=======
+>>>>>>> Stashed changes
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -252,15 +260,23 @@
       <workItem from="1562785656522" duration="3420000" />
       <workItem from="1562825348094" duration="4771000" />
       <workItem from="1562917426119" duration="36000" />
+<<<<<<< Updated upstream
       <workItem from="1563032754094" duration="464000" />
       <workItem from="1563172750523" duration="1740000" />
       <workItem from="1563176793741" duration="1784000" />
       <workItem from="1563191257377" duration="1831000" />
+=======
+      <workItem from="1563032754094" duration="691000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="33361000" />
+=======
+    <option name="totallyTimeSpent" value="28233000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -402,8 +418,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/data.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="315">
           <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+=======
+        <state relative-caret-position="150">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
