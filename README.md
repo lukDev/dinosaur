@@ -19,4 +19,5 @@ Clone the source code onto your device, navigate to `src/` and run `python main.
 
 Engine
 ---
-This project uses [pyglet](https://bitbucket.org/pyglet/pyglet/wiki/Home) for rendering the entities and UI elements. 
+This project uses [pyglet](https://bitbucket.org/pyglet/pyglet/wiki/Home) for rendering the entities and UI elements.  
+To get pyglet, run `pip install pyglet`.

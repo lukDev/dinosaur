@@ -1,23 +1,22 @@
 import pyglet
-from pyglet.gl import GL_QUADS
+from pyglet.gl import *
 from utils.data import Data
 from utils import math_helper
+from resources import Resources
 
 
 # superclass for all moving objects
 class Entity:
+
     def __init__(self, x, y, size_x, size_y):
+        Resources.load_images()
+
         self.x = x
         self.y = y
         self.size_x = size_x
         self.size_y = size_y
         self.time_since_jump = 0
         self.long_jump = False
-
-    # draws the entity to the screen, in the form of a black rectangle
-    def render(self):
-        coords = [self.x, self.y, self.x + self.size_x, self.y, self.x + self.size_x, self.y + self.size_y, self.x, self.y + self.size_y]
-        pyglet.graphics.draw(4, GL_QUADS, ("v2f", coords))
 
     # returns the entity's center coordinates
     def center(self):
@@ -81,6 +80,16 @@ class Player(Entity):
         if obs_1 is not None:
             self.alive = not math_helper.are_rects_intersecting(self.x, self.y, self.size_x, self.size_y, obs_1.x, obs_1.y, obs_1.size_x, obs_1.size_y)
 
+    # draws the player to the screen
+    def render(self):
+        glEnable(GL_BLEND)
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+
+        if self.y > Data.baseline: # player is jumping
+            Resources.player_jumping_image().blit(self.x, self.y)
+        else: # player is running
+            Resources.player_running_image().blit(self.x, self.y)
+
 
 class Obstacle(Entity):
     def __init__(self, x, y, size_x=20., size_y=40.):
@@ -89,3 +98,13 @@ class Obstacle(Entity):
     # moves the obstacle closer to the player
     def move(self, dt):
         self.x -= dt * Data.obstacle_speed
+
+    # draws the obstacle to the screen, in the form of a black rectangle
+    def render(self):
+        glEnable(GL_BLEND)
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+
+        for i in range(len(Data.obstacle_sizes)):
+            ((w, h), _) = Data.obstacle_sizes[i]
+            if w == self.size_x and h == self.size_y:
+                Resources.obstacle_images[i].blit(self.x, self.y)

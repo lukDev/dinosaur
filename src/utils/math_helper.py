@@ -59,7 +59,7 @@ def x_dif_to_activation(x1, x2):
 
 # returns the height of an obstacle in relation to the total available height range, modified by the sigmoid function
 def obstacle_size_y_to_activation(size_y):
-    heights = [h for (h, _) in Data.obstacle_sizes_y]
+    heights = [h for ((_, h), _) in Data.obstacle_sizes]
     max_height = max(heights)
     min_height = min(heights)
     return (size_y - min_height) / (max_height - min_height)

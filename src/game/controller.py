@@ -33,7 +33,7 @@ class Controller:
         obstacles_to_remove = []
         for obstacle in Data.obstacles:
             obstacle.move(dt)
-            if obstacle.x <= -Data.obstacle_size_x:
+            if obstacle.x <= -obstacle.size_x:
                 obstacles_to_remove.append(obstacle)
         new_obstacles = [obstacle for obstacle in Data.obstacles if obstacle not in obstacles_to_remove]
         Data.obstacles = new_obstacles
@@ -43,8 +43,8 @@ class Controller:
     # sends a new obstacle towards the player and sets a timer for the next one
     @staticmethod
     def send_obstacle(_):
-        size_y = math_helper.random_range_decision(Data.obstacle_sizes_y)
-        Data.obstacles.append(entity.Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=Data.obstacle_size_x, size_y=size_y))
+        size = math_helper.random_range_decision(Data.obstacle_sizes)
+        Data.obstacles.append(entity.Obstacle(x=Data.obstacle_start_x, y=Data.baseline, size_x=size[0], size_y=size[1]))
         pyglet.clock.schedule_once(Controller.send_obstacle, random.uniform(Data.obstacle_time_dif_min, Data.obstacle_time_dif_max))
 
     # resets the level
@@ -67,8 +67,8 @@ class Controller:
             add_outs = [3, 4]
 
             network = Network(genes, add_ins, add_outs)
-            Data.players.append(entity.Player(network, x=Data.player_x, y=Data.baseline, size_x=Data.player_size_x,
-                                              size_y=Data.player_size_y))
+            Data.players.append(entity.Player(network, x=Data.player_x, y=Data.baseline, size_x=Data.player_size[0],
+                                              size_y=Data.player_size[1]))
 
     # creates new players from a given list of neural networks
     @staticmethod
@@ -76,5 +76,5 @@ class Controller:
         Data.players = []
 
         for net in nets:
-            Data.players.append(entity.Player(network=net, x=Data.player_x, y=Data.baseline, size_x=Data.player_size_x,
-                                              size_y=Data.player_size_y))
+            Data.players.append(entity.Player(network=net, x=Data.player_x, y=Data.baseline, size_x=Data.player_size[0],
+                                              size_y=Data.player_size[1]))

@@ -8,20 +8,18 @@ class Data:
     second_closest_obstacle = None
 
     # --- Game Parameters ---
-    field_size_x = 800.
-    field_size_y = 300.
+    field_size_x = 1200.
+    field_size_y = 500.
     player_x = 100.
     baseline = 60.
-    player_size_x = 20.
-    player_size_y = 50.
+    player_size = (80., 86.)
     activation_jump_threshold = 0.75
-    obstacle_speed = 400.
+    obstacle_speed = 350.
     obstacle_start_x = field_size_x + 10.
-    obstacle_size_x = 20.
-    obstacle_sizes_y = [(40., .6), (60., .4)]
-    obstacle_time_dif_min = 0.55
-    obstacle_time_dif_max = 1.5
-    jump_speed_up = 300.
+    obstacle_sizes = [((64., 66.), .6), ((46., 90.), .4)]
+    obstacle_time_dif_min = .85
+    obstacle_time_dif_max = 1.6
+    jump_speed_up = 500.
     gravity_acc = 1500.
     no_gravity_time_long = 0.18
     no_gravity_time_short = 0.085
@@ -43,5 +41,5 @@ class Data:
     # --- Methods ---
     @staticmethod
     def standard_obstacle_size_y():
-        (size_y, _) = Data.obstacle_sizes_y[0]
+        (size_y, _) = Data.obstacle_sizes[0][0]
         return size_y
