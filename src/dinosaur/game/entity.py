@@ -1,8 +1,7 @@
-import pyglet
 from pyglet.gl import *
-from utils.data import Data
-from utils import math_helper
-from game.resources import Resources
+from dinosaur.utils.data import Data
+from dinosaur.utils import math_helper
+from dinosaur.game.resources import Resources
 
 
 # superclass for all moving objects

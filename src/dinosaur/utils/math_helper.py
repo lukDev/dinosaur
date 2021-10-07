@@ -1,6 +1,6 @@
 import math
 import random
-from utils.data import Data
+from dinosaur.utils.data import Data
 
 
 # --- 2D Maths ---

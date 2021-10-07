@@ -15,7 +15,7 @@ This project has been developed locally and without version control and only rec
 Cloning and running
 ---
 To run this project, make sure you have python 2.7 and pyglet (see below) installed.  
-Clone the source code onto your device, navigate to `src/` and run `python main.py`.
+Clone the source code onto your device, navigate to `src/dinosaur/` and run `python main.py`.
 
 Engine
 ---

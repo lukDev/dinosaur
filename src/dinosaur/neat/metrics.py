@@ -1,8 +1,8 @@
-from utils.data import Data
+from dinosaur.utils.data import Data
 import random
-from neat.network import Network
-from neat.network import Gene
-from utils import math_helper
+from dinosaur.neat.network import Network
+from dinosaur.neat.network import Gene
+from dinosaur.utils import math_helper
 
 
 # --- Fitness Evaluation ---
@@ -175,7 +175,7 @@ def mutate(nets):
             if math_helper.random_decision(Data.prob_weight_mut):
                 if math_helper.random_decision(Data.prob_weight_nudged):
                     gene.weight = math_helper.sigmoid_weight(gene.weight
-                                         + random.uniform(-Data.weight_nudge_limit, Data.weight_nudge_limit))
+                                                             + random.uniform(-Data.weight_nudge_limit, Data.weight_nudge_limit))
                 else:
                     gene.weight = random.uniform(-1., 1.)
 

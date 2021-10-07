@@ -1,9 +1,9 @@
-from utils.data import Data
-import game.entity as entity
+from dinosaur.utils.data import Data
+import dinosaur.game.entity as entity
 import pyglet
 import random
-from utils import math_helper
-from neat.network import Network
+from dinosaur.utils import math_helper
+from dinosaur.neat.network import Network
 
 
 class Controller:

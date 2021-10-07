@@ -1,6 +1,6 @@
 from functools import reduce
 
-from utils import math_helper
+from dinosaur.utils import math_helper
 import random
 
 

@@ -1,8 +1,9 @@
 import pyglet
-from neat import metrics
-from utils.data import Data
+from dinosaur.neat import metrics
+from dinosaur.utils.data import Data
 import pyglet.window.key
-from game.controller import Controller
+from dinosaur.game.controller import Controller
+
 
 # --- Initialization ---
 window = pyglet.window.Window(width=Data.field_size_x, height=Data.field_size_y, resizable=True)
@@ -78,4 +79,4 @@ def start():
     pyglet.app.run()
 
 
-start()
+# start()
