@@ -79,4 +79,4 @@ def start():
     pyglet.app.run()
 
 
-# start()
+start()

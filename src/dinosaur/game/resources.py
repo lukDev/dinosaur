@@ -18,13 +18,13 @@ class Resources:
     @staticmethod
     def load_images():
         if len(Resources.player_images) == 0:
-            Resources.player_images.append(pyglet.image.load("../res/dinosaur_left.png"))
-            Resources.player_images.append(pyglet.image.load("../res/dinosaur_right.png"))
-            Resources.player_images.append(pyglet.image.load("../res/dinosaur_normal.png"))
+            Resources.player_images.append(pyglet.image.load("res/dinosaur_left.png"))
+            Resources.player_images.append(pyglet.image.load("res/dinosaur_right.png"))
+            Resources.player_images.append(pyglet.image.load("res/dinosaur_normal.png"))
 
         if len(Resources.obstacle_images) == 0:
-            Resources.obstacle_images.append(pyglet.image.load("../res/cactus_small.png"))
-            Resources.obstacle_images.append(pyglet.image.load("../res/cactus_big.png"))
+            Resources.obstacle_images.append(pyglet.image.load("res/cactus_small.png"))
+            Resources.obstacle_images.append(pyglet.image.load("res/cactus_big.png"))
             
         Resources.start_player_animation()
 
