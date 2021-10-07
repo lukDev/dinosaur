@@ -2,7 +2,7 @@ import pyglet
 from pyglet.gl import *
 from utils.data import Data
 from utils import math_helper
-from resources import Resources
+from game.resources import Resources
 
 
 # superclass for all moving objects

@@ -1,3 +1,5 @@
+from functools import reduce
+
 from utils import math_helper
 import random
 

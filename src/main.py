@@ -73,5 +73,9 @@ def next_gen():
     pyglet.clock.schedule_interval(update, 1. / 60.)
 
 
-next_gen()
-pyglet.app.run()
+def start():
+    next_gen()
+    pyglet.app.run()
+
+
+start()
